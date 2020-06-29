@@ -37,6 +37,13 @@ After doing the above, the home directory (`/root`) in the container should look
 ```
 
 ## Tips
+### Always set specific directory as project directory
+You can always set `DOCKER_EMACS_PRJ` as `[specific directory]` with following commands:
+
+```shell
+echo 'export DOCKER_EMACS_PRJ=[specific directory]' >> ~/.bashrc
+```
+
 ### Launch Emacs as CUI
 You have to press Ctrl-p twice because of setting of `detachKey` when launch emacs as CUI.  
 It is necessary to change the setting of `detachKey` in order to solve it.  

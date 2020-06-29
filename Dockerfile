@@ -23,7 +23,7 @@ RUN apt update && apt install -y \
     rm -rf /var/lib/apt/lists/*
 
 # LSP server for C/C++/Object-C (ccls)
-RUN cd /root && \
+RUN cd /usr/src && \
     git clone --depth=1 --recursive https://github.com/MaskRay/ccls && \
     cd ccls && \
     wget -c http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz && \

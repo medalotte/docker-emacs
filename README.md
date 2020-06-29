@@ -35,3 +35,20 @@ After doing the above, the home directory (`/root`) in the container should look
 ├── .emacs.d    # Your Emacs configuration
 └── .Xauthority # for X11 auth
 ```
+
+## Tips
+### Launch Emacs as CUI
+You have to press Ctrl-p twice because of setting of `detachKey` when launch emacs as CUI.  
+It is necessary to change the setting of `detachKey` in order to solve it.  
+Please update `~/.docker/config.json` as following:
+
+```json
+{
+    "detachKeys": "ctrl-\\"
+}
+```
+
+Note that the following requirements must be met for this setting to take effect:
+
+- **Docker** 1.10.0 or higher
+- **Docker Compose** 1.20.0 or higher

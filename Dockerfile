@@ -36,7 +36,7 @@ RUN cd /usr/src && \
     cmake --build Release --target install
 
 # LSP server for Python (pyls)
-RUN python3 -m pip install 'python-language-server[all]' && \
+RUN python3 -m pip install 'python-language-server[all]'
 
 # LSP server for Bash/Dockerfile/HTML/CSS/JavaScript/TypeScript
 RUN npm i -g \

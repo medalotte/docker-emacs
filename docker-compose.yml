@@ -1,0 +1,15 @@
+version: '3.0'
+services:
+  docker-emacs:
+    container_name: 'docker-emacs27'
+    hostname: 'docker-emacs27'
+    build: ./
+    working_dir: /root
+    volumes:
+      - ./home:/root
+      - $DOCKER_EMACS_PRJ:/root/prj
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - $HOME/.Xauthority:/root/.Xauthority
+    environment:
+      - DISPLAY=$DISPLAY
+    command: emacs

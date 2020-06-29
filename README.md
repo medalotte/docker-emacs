@@ -38,7 +38,7 @@ After doing the above, the home directory (`/root`) in the container should look
 
 ## Tips
 ### Always set specific directory as project directory
-You can always set `DOCKER_EMACS_PRJ` as `[specific directory]` with following commands:
+You can always set `[specific directory]` as `DOCKER_EMACS_PRJ` with following commands:
 
 ```shell
 echo 'export DOCKER_EMACS_PRJ=[specific directory]' >> ~/.bashrc

@@ -2,8 +2,8 @@
 Dockerized Emacs environment including some LSP servers
 
 ## Features
-- Launch Emacs 27 on container based on Ubuntu 18.04 using [silex/emacs:27.0](https://github.com/Silex/docker-emacs/blob/master/27.0/ubuntu/18.04/Dockerfile)
-- Pre-install some LSP servers for [lsp-mode](https://github.com/emacs-lsp/lsp-mode)
+- Launch Emacs 27 on a container based on Ubuntu 18.04 by [silex/emacs:27.0](https://github.com/Silex/docker-emacs/blob/master/27.0/ubuntu/18.04/Dockerfile)
+- Preinstall some LSP servers for [lsp-mode](https://github.com/emacs-lsp/lsp-mode)
 
 | Language              | LSP server                                                                                             |
 |:----------------------|:-------------------------------------------------------------------------------------------------------|
@@ -16,6 +16,7 @@ Dockerized Emacs environment including some LSP servers
 | JavaScript/TypeScript | [typescript-language-server](https://github.com/theia-ide/typescript-language-server)                  |
 
 ## Usage
+Please setup the container with following commands:
 
 ```shell
 $ git clone https://github.com/medalotte/docker-emacs.git
@@ -24,15 +25,20 @@ $ docker-compose build
 $ cp -R [your .emacs.d] ./home # Please set your emacs configuration. In my case: `$ git clone https://github.com/medalotte/.emacs.d.git ./home`
 $ export DOCKER_EMACS_PRJ=[a project root you want to edit by docker-emacs]
 $ xhost + local:root
+```
+
+After that, you can launch Emacs on the container with following command:
+
+```shell
 $ docker-compose run --rm docker-emacs
 ```
 
-After doing the above, the home directory (`/root`) in the container should look like this:
+The home directory in the container looks like this:
 
 ```shell
 /root
 ├── prj         # a project root you set DOCKER_EMACS_PRJ
-├── .emacs.d    # Your Emacs configuration
+├── .emacs.d    # Emacs configuration directory
 └── .Xauthority # for X11 auth
 ```
 
@@ -45,8 +51,8 @@ echo 'export DOCKER_EMACS_PRJ=[specific directory]' >> ~/.bashrc
 ```
 
 ### Launch Emacs as CUI
-You have to press Ctrl-p twice because of setting of `detachKey` when launch emacs as CUI.  
-It is necessary to change the setting of `detachKey` in order to solve it.  
+If Emacs is invoked with CUI, you have to press `C-p` twice to move the cursor up.  
+It is necessary to change the setting of `detachKey` in order to above problem.  
 Please update `~/.docker/config.json` as following:
 
 ```json
@@ -55,7 +61,7 @@ Please update `~/.docker/config.json` as following:
 }
 ```
 
-Note that the following requirements must be met for this setting to take effect:
+Note that the following requirements must be met for the solution to take effect:
 
-- **Docker** 1.10.0 or higher
-- **Docker Compose** 1.20.0 or higher
+- **Docker:** ver.1.10.0 or higher
+- **Docker Compose:** ver.1.20.0 or higher

@@ -37,9 +37,10 @@ The home directory in the container looks like this:
 
 ```shell
 /root
-├── prj         # a project root you set DOCKER_EMACS_PRJ
-├── .emacs.d    # Emacs configuration directory
-└── .Xauthority # for X11 auth
+├── prj           # a project root you set DOCKER_EMACS_PRJ
+├── entrypoint.sh # a script for running Emacs
+├── .emacs.d      # Emacs configuration directory
+└── .Xauthority   # for X11 auth
 ```
 
 ## Tips
@@ -51,8 +52,8 @@ echo 'export DOCKER_EMACS_PRJ=[specific directory]' >> ~/.bashrc
 ```
 
 ### Launch Emacs as CUI
-If Emacs is invoked with CUI, you have to press `C-p` twice to move the cursor up.  
-It is necessary to change the setting of `detachKey` in order to above problem.  
+If Emacs is invoked with CUI, you have to press `C-p` twice to move the cursor up.
+It is necessary to change the setting of `detachKey` in order to above problem.
 Please update `~/.docker/config.json` as following:
 
 ```json

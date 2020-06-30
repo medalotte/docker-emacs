@@ -10,6 +10,7 @@ services:
       - $DOCKER_EMACS_PRJ:/root/prj
       - /tmp/.X11-unix:/tmp/.X11-unix
       - $HOME/.Xauthority:/root/.Xauthority
+      - $HOME/.ssh:/tmp/.ssh
     environment:
       - DISPLAY=$DISPLAY
-    command: emacs
+    command: bash entrypoint.sh

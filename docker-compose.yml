@@ -13,4 +13,5 @@ services:
       - $HOME/.ssh:/tmp/.ssh
     environment:
       - DISPLAY=$DISPLAY
+      - NO_AT_BRIDGE=1
     command: bash entrypoint.sh

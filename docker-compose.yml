@@ -11,6 +11,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - $HOME/.Xauthority:/root/.Xauthority
       - $HOME/.ssh:/tmp/.ssh
+      - $HOME/.gitconfig:/root/.gitconfig
     environment:
       - DISPLAY=$DISPLAY
       - NO_AT_BRIDGE=1

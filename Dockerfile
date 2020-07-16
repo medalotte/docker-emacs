@@ -14,6 +14,7 @@ RUN apt update && apt install -y \
     python3 \
     python3-pip \
     npm \
+    tmux \
     xclip && \
     curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb && \
     dpkg -i ripgrep_12.1.1_amd64.deb && rm ripgrep_12.1.1_amd64.deb && \
@@ -53,3 +54,9 @@ RUN npm i -g \
     vscode-css-languageserver-bin \
     typescript-language-server \
     typescript
+
+# install Starship
+RUN cd /tmp && \
+    wget https://starship.rs/install.sh && \
+    bash install.sh --yes && \
+    rm install.sh

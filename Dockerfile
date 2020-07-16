@@ -4,12 +4,12 @@ FROM silex/emacs:27.0
 # install build tools and so on
 RUN apt update && apt install -y \
     build-essential \
-    cmake \
     git \
     gdb \
     curl \
     wget \
     gnupg \
+    libtool-bin \
     libtinfo-dev \
     python3 \
     python3-pip \
@@ -21,6 +21,11 @@ RUN apt update && apt install -y \
     bazel && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN cd /tmp && \
+    git clone -b release --depth=1 https://github.com/Kitware/CMake.git && \
+    cd CMake && ./bootstrap && make -j4 && make install && \
+    cd /tmp && rm -rf CMake
 
 # LSP server for C/C++/Object-C (ccls)
 RUN cd /usr/src && \

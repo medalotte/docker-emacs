@@ -24,13 +24,12 @@ $ cd docker-emacs
 $ docker-compose build
 $ cp -R [your .emacs.d] ./home # Please set your emacs configuration. In my case: `$ git clone https://github.com/medalotte/.emacs.d.git ./home`
 $ export DOCKER_EMACS_PRJ=[a project root you want to edit by docker-emacs]
-$ xhost + local:root
 ```
 
 After that, you can launch Emacs on the container with following command:
 
 ```shell
-$ docker-compose run --rm docker-emacs
+$ docker-compose run -u "$(id -u $USER):$(id -g $USER)" --rm docker-emacs
 ```
 
 The home directory in the container looks like this:

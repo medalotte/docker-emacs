@@ -4,14 +4,16 @@ services:
     container_name: 'docker-emacs27'
     hostname: 'docker-emacs27'
     build: ./
-    working_dir: /root
+    working_dir: $HOME
     volumes:
-      - ./home:/root
-      - $DOCKER_EMACS_PRJ:/root/prj
+      - ./home:$HOME
+      - $DOCKER_EMACS_PRJ:/$HOME/prj
       - /tmp/.X11-unix:/tmp/.X11-unix
       - $HOME/.Xauthority:/root/.Xauthority
       - $HOME/.ssh:/tmp/.ssh
       - $HOME/.gitconfig:/root/.gitconfig
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
     environment:
       - DISPLAY=$DISPLAY
       - NO_AT_BRIDGE=1

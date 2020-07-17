@@ -3,6 +3,7 @@ Dockerized Emacs environment including some LSP servers
 
 ## Features
 - Launch Emacs 27 on a container based on Ubuntu 18.04 by [silex/emacs:27.0](https://github.com/Silex/docker-emacs/blob/master/27.0/ubuntu/18.04/Dockerfile)
+- Preinstall some tools for Emacs extensions
 - Preinstall some LSP servers for [lsp-mode](https://github.com/emacs-lsp/lsp-mode)
 
 | Language              | LSP server                                                                                             |
@@ -22,7 +23,6 @@ Please setup the container with following commands:
 $ git clone https://github.com/medalotte/docker-emacs.git
 $ cd docker-emacs
 $ docker-compose build
-$ cp -R [your .emacs.d] ./home # Please set your emacs configuration. In my case: `$ git clone https://github.com/medalotte/.emacs.d.git ./home`
 $ export DOCKER_EMACS_PRJ=[a project root you want to edit by docker-emacs]
 ```
 
@@ -35,10 +35,10 @@ $ docker-compose run -u "$(id -u $USER):$(id -g $USER)" --rm docker-emacs
 The home directory in the container looks like this:
 
 ```shell
-/root
+/$HOME
 ├── prj           # a project root you set DOCKER_EMACS_PRJ
-├── entrypoint.sh # a script for running Emacs
-├── .emacs.d      # Emacs configuration directory
+├── .emacs.d      # Emacs configuration
+├── .bashrc       # including starship
 └── .Xauthority   # for X11 auth
 ```
 

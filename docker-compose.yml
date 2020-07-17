@@ -6,6 +6,7 @@ services:
     build: ./
     working_dir: $HOME
     volumes:
+      - ./entrypoint.sh:/tmp/entrypoint.sh
       - ./home:$HOME
       - $DOCKER_EMACS_PRJ:/$HOME/prj
       - /tmp/.X11-unix:/tmp/.X11-unix
@@ -17,4 +18,4 @@ services:
     environment:
       - DISPLAY=$DISPLAY
       - NO_AT_BRIDGE=1
-    command: bash entrypoint.sh
+    command: bash /tmp/entrypoint.sh

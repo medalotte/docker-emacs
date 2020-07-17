@@ -26,7 +26,7 @@ $ docker-compose build
 $ export DOCKER_EMACS_PRJ=[a project root you want to edit by docker-emacs]
 ```
 
-After that, you can launch Emacs on the container with following command:
+After that, you can launch Emacs on the container with the following command:
 
 ```shell
 $ docker-compose run -u "$(id -u $USER):$(id -g $USER)" --rm docker-emacs
@@ -36,24 +36,33 @@ The home directory in the container looks like this:
 
 ```shell
 /$HOME
-├── prj           # a project root you set DOCKER_EMACS_PRJ
+├── prj           # the project that you set DOCKER_EMACS_PRJ
 ├── .emacs.d      # Emacs configuration
-├── .bashrc       # including starship
+├── .bashrc       # including Starship configuration
 └── .Xauthority   # for X11 auth
 ```
 
 ## Tips
-### Always set specific directory as project directory
-You can always set `[specific directory]` as `DOCKER_EMACS_PRJ` with following commands:
+### Easy to launch `docker-emacs`
+You can easily launch `docker-emacs` by setting `DOCKER_EMACS_PRJ` and alias to `.bashrc` with the following command:
 
 ```shell
-echo 'export DOCKER_EMACS_PRJ=[specific directory]' >> ~/.bashrc
+$ cat <<EOF >> ~/.bashrc
+  export DOCKER_EMACS_PRJ=[specific directory]
+  alias docker-emacs='cd [absolute path of this repository] && docker-compose run -u "$(id -u $USER):$(id -g $USER)" --rm docker-emacs && cd -'
+  EOF
+```
+
+You can launch `docker-emacs` from any directory with the following command:
+
+```shell
+$ docker-emacs
 ```
 
 ### Launch Emacs as CUI
 If Emacs is invoked with CUI, you have to press `C-p` twice to move the cursor up.
-It is necessary to change the setting of `detachKey` in order to above problem.
-Please update `~/.docker/config.json` as following:
+It is necessary to change the setting of `detachKey` to avoid the above problem.
+Please update `~/.docker/config.json` as the following:
 
 ```json
 {

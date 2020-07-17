@@ -48,9 +48,9 @@ You can easily launch `docker-emacs` by setting `DOCKER_EMACS_PRJ` and alias to 
 
 ```shell
 $ cat <<EOF >> ~/.bashrc
-  export DOCKER_EMACS_PRJ=[specific directory]
-  alias docker-emacs='cd [absolute path of this repository] && docker-compose run -u "$(id -u $USER):$(id -g $USER)" --rm docker-emacs && cd -'
-  EOF
+export DOCKER_EMACS_PRJ=[specific directory]
+alias docker-emacs='cd [absolute path of this repository] && docker-compose run -u "\$(id -u \$USER):\$(id -g \$USER)" --rm docker-emacs && cd -'
+EOF
 ```
 
 You can launch `docker-emacs` from any directory with the following command:

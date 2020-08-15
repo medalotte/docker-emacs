@@ -1,5 +1,5 @@
 # the docker image with Emacs 27 installed on Ubuntu 18.04
-FROM silex/emacs:27.0
+FROM silex/emacs:27.1
 
 # install build tools and so on
 RUN apt update && apt install -y \

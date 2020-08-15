@@ -2,7 +2,7 @@
 Dockerized Emacs environment including some LSP servers
 
 ## Features
-- Launch Emacs 27 on a container based on Ubuntu 18.04 by [silex/emacs:27.0](https://github.com/Silex/docker-emacs/blob/master/27.0/ubuntu/18.04/Dockerfile)
+- Launch Emacs 27.1 on a container based on Ubuntu 18.04 by [silex/emacs:27.1](https://github.com/Silex/docker-emacs/blob/master/27.1/ubuntu/18.04/Dockerfile)
 - Preinstall some tools for Emacs extensions
 - Preinstall some LSP servers for [lsp-mode](https://github.com/emacs-lsp/lsp-mode)
 

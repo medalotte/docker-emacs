@@ -1,5 +1,18 @@
 # the docker image with Emacs 27 installed on Ubuntu 18.04
 FROM silex/emacs:27.1
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt update && apt install -y \
+    locales && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN dpkg-reconfigure locales && \
+    locale-gen ja_JP ja_JP.UTF-8 && \
+    update-locale LC_ALL=ja_JP.UTF-8 LANG=ja_JP.UTF-8
+ENV LC_ALL   ja_JP.UTF-8
+ENV LANG     ja_JP.UTF-8
+ENV LANGUAGE ja_JP.UTF-8
 
 # install build tools and so on
 RUN apt update && apt install -y \
@@ -13,6 +26,7 @@ RUN apt update && apt install -y \
     libtinfo-dev \
     python3 \
     python3-pip \
+    texlive-full \
     npm \
     tmux \
     xclip && \

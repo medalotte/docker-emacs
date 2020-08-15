@@ -10,9 +10,9 @@ services:
       - ./home:$HOME
       - $DOCKER_EMACS_PRJ:/$HOME/prj
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - $HOME/.Xauthority:/root/.Xauthority
+      - $HOME/.Xauthority:/$HOME/.Xauthority
       - $HOME/.ssh:/tmp/.ssh
-      - $HOME/.gitconfig:/root/.gitconfig
+      - $HOME/.gitconfig:/$HOME/.gitconfig
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     environment:
